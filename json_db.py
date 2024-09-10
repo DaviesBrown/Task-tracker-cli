@@ -1,3 +1,4 @@
+import json
 import os
 
 
@@ -12,11 +13,13 @@ class JSONDB:
         if not os.path.exists(self.filepath):
             return 'No task to do!'
         with open(self.filepath) as f:
-            return f.read()
+            return json.load(f)
     
-    def write_db(self):
-        ...
+    def write_db(self, data):
+        with open(self.filepath, 'a') as f:
+            json.dump(data, f)
 
 
 me = JSONDB()
-print(me.json)
+#print(me.write_db('dddddd'))
+print(me.read_db())
