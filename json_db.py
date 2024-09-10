@@ -22,4 +22,4 @@ class JSONDB:
 
 me = JSONDB()
 #print(me.write_db('dddddd'))
-print(me.read_db())
+#print(me.read_db())
