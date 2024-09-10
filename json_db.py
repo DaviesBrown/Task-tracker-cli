@@ -10,16 +10,24 @@ class JSONDB:
         self.json = self.read_db()
 
     def read_db(self):
-        if not os.path.exists(self.filepath):
-            return 'No task to do!'
-        with open(self.filepath) as f:
-            return json.load(f)
+        try:
+            with open(self.filepath) as f:
+                return json.load(f)
+        except FileNotFoundError:
+            print('No task to do!')
     
     def write_db(self, data):
-        with open(self.filepath, 'a') as f:
-            json.dump(data, f)
+        if not self.json:
+            with open(self.filepath, 'w') as f:
+                json.dump([data], f)
+        else:
+            with open(self.filepath, 'w') as f:
+                db = self.json
+                db.append(data)
+                json.dump(db, f)
 
 
-me = JSONDB()
-#print(me.write_db('dddddd'))
-#print(me.read_db())
+db = JSONDB()
+""" print(db.json)
+db.write_db({'dd': 'ggg'})
+print(db.read_db()) """

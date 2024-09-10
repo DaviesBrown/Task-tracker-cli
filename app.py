@@ -1,6 +1,6 @@
 import sys
 
-from json_db import JSONDB
+from tracker import tracker
 
 
 def main():
@@ -8,12 +8,12 @@ def main():
     if len(args) < 2:
         print('help')
     elif args[1].lower() == 'add':
+            tracker.create_task(sys.argv[2])
+    elif args[1].lower() == 'list':
         print('let')
     elif args[1].lower() == 'update':
         print('let')
     elif args[1].lower() == 'delete':
-        print('let')
-    elif args[1].lower() == 'list':
         print('let')
     elif args[1].lower() == 'mark-in-progress':
         print('let')
