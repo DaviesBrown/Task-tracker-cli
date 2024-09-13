@@ -19,12 +19,12 @@ class JSONDB:
     def write_db(self, data):
         if not self.json:
             with open(self.filepath, 'w') as f:
-                json.dump([data], f)
+                self.json = [data]
+                json.dump(self.json, f)
         else:
             with open(self.filepath, 'w') as f:
-                db = self.json
-                db.append(data)
-                json.dump(db, f)
+                self.json.append(data)
+                json.dump(self.json, f)
 
 
 db = JSONDB()
