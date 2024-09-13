@@ -3,7 +3,7 @@ import os
 
 
 class JSONDB:
-    def __init__(self):
+    def __init__(self) -> None:
         self.cwd = os.getcwd()
         self.filename = 'tracker.json'
         self.filepath = os.path.join(self.cwd, self.filename)
