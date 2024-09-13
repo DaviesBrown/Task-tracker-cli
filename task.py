@@ -4,8 +4,8 @@ from uuid import uuid4
 status = ['todo', 'in-progress', 'done']
 
 class Task:
-    def __init__(self, description):
-        self.id = str(uuid4())
+    def __init__(self, id, description):
+        self.id = id #str(uuid4())
         self.description = description
         self.status = status[0]
         self.createdAt = datetime.now().strftime('%c')
