@@ -26,6 +26,11 @@ class JSONDB:
                 self.json.append(data)
                 json.dump(self.json, f)
 
+    def delete_db(self, id):
+        self.json = [task for task in db.json if task["id"] != int(id)]
+        with open(self.filepath, 'w') as f:
+            json.dump(self.json, f)
+
 
 db = JSONDB()
 """ print(db.json)

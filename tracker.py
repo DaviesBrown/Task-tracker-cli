@@ -5,7 +5,8 @@ from json_db import db
 
 class Tracker:
     def __init__(self):
-        self.task_counter = db.json[-1]['id'] if db.json else 0
+        print(db.json)
+        self.task_counter = db.json[-1].get('id') if db.json else 0
 
     def create_task(self, description):
         """
@@ -27,6 +28,15 @@ class Tracker:
         data[0]["updatedAt"] = datetime.now().strftime('%c')
         db.json.remove(old)
         db.write_db(data[0])
-        print(data[0])
+        return f"Output: Task updated successfully (ID: {data[0]['id']})"
+
+    def delete_task(self, id):
+        """
+            Deletes a task by id
+        """
+        db.delete_db(id)
+        return f"Output: Task deleted successfully (ID: {id})"
+        
+        
 
 tracker = Tracker()
