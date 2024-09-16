@@ -22,13 +22,9 @@ class Tracker:
         """
             Updates a task from the json file based on id
         """
-        data = [task for task in db.json if task["id"] == int(id)]
-        old = data[0]
-        data[0]["description"] = description
-        data[0]["updatedAt"] = datetime.now().strftime('%c')
-        db.json.remove(old)
-        db.write_db(data[0])
-        return f"Output: Task updated successfully (ID: {data[0]['id']})"
+        type = "description"
+        db.update_db(id,type, description)
+        return f"Output: Task updated successfully (ID: {id})"
 
     def delete_task(self, id):
         """
@@ -36,6 +32,7 @@ class Tracker:
         """
         db.delete_db(id)
         return f"Output: Task deleted successfully (ID: {id})"
+
         
         
 
