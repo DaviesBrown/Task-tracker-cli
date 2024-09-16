@@ -1,13 +1,18 @@
 from datetime import datetime
 from uuid import uuid4
+from enum import Enum
 
-status = ['todo', 'in-progress', 'done']
+class Status(Enum):
+    TODO = 'todo'
+    INPROGRESS = 'in-progress'
+    DONE = 'done'
+
 
 class Task:
     def __init__(self, id, description):
         self.id = id #str(uuid4())
         self.description = description
-        self.status = status[0]
+        self.status = Status.TODO.value
         self.createdAt = datetime.now().strftime('%c')
         self.updatedAt = self.createdAt
 

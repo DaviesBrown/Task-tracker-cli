@@ -12,7 +12,7 @@ def main():
             else:
                 print("Usage: app.py add <description>")
         elif args[1].lower() == 'list':
-            print('let')
+            print(let)
         elif args[1].lower() == 'update':
             if len(args) == 4:
                 [_, _, id, description] = args
@@ -26,9 +26,15 @@ def main():
             else:
                 print("Usage: app.py delete <id>")
         elif args[1].lower() == 'mark-in-progress':
-            print('let')
+            if len(args) == 3:
+                tracker.mark_in_progress(sys.argv[2])
+            else:
+                print("Usage: app.py mark-in-progress <id>")
         elif args[1].lower() == 'mark-done':
-            print('let')
+            if len(args) == 3:
+                tracker.mark_done(sys.argv[2])
+            else:
+                print("Usage: app.py mark-done <id>")
     else:
         print('help wanted')
 
