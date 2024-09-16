@@ -8,11 +8,16 @@ def main():
     if len(args) >= 2:
         if args[1].lower() == 'add':
             if len(args) == 3:
-                return tracker.create_task(sys.argv[2])
+                message = tracker.create_task(sys.argv[2])
+                print(message)
             else:
                 print("Usage: app.py add <description>")
         elif args[1].lower() == 'list':
-            print(let)
+            if len(args) == 2:
+                return tracker.list_all()
+            elif len(args) == 3:
+                status = args[2]
+                return tracker.list(status)
         elif args[1].lower() == 'update':
             if len(args) == 4:
                 [_, _, id, description] = args

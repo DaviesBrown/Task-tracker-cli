@@ -5,7 +5,6 @@ from json_db import db
 
 class Tracker:
     def __init__(self):
-        print(db.json)
         self.task_counter = db.json[-1].get('id') if db.json else 0
 
     def create_task(self, description):
@@ -48,8 +47,25 @@ class Tracker:
         type = "status"
         db.update_db(id,type, Status.DONE.value)
         return f"Output: Task marked as done successfully (ID: {id})"
+    
+    def list_all(self):
+        """
+            Lists all tasks
+        """
+        return [print(Tracker.task_format(task)) for task in db.json]
+    
+    def list(self, status):
+        """
+            Lists tasks by current status
+        """
+        return [print(Tracker.task_format(task)) for task in db.json if task["status"] == status]
 
-        
-        
+    def task_format(task):
+        return f"""\tTask ID: {task['id']}
+        Task Description: {task['description']}
+        Status: {task['status']}
+        Date Created: {task['createdAt']}
+        Date Updated: {task['updatedAt']}
+    """
 
 tracker = Tracker()
