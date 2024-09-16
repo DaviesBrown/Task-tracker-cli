@@ -1,4 +1,3 @@
-from datetime import datetime
 import json
 import os
 
@@ -26,14 +25,6 @@ class JSONDB:
             with open(self.filepath, 'w') as f:
                 self.json.append(data)
                 json.dump(self.json, f)
-    
-    def update_db(self, id, type, data):
-        lookup = [task for task in db.json if task["id"] == int(id)][0]
-        old = lookup
-        lookup[type] = data
-        lookup["updatedAt"] = datetime.now().strftime('%c')
-        db.json.remove(old)
-        db.write_db(lookup)
 
     def delete_db(self, id):
         self.json = [task for task in db.json if task["id"] != int(id)]
