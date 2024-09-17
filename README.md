@@ -1,4 +1,6 @@
 # Task Tracker CLI
+Create and track task from the cli
+
 ### Setup
 Run `./setup.sh`
 
